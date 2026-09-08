@@ -1,22 +1,67 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-red: #E31837;
-  --color-brand-dark: #1e293b;
+  /* === Color Palette (taste-skill compliant) === */
+  /* Canvas & Surface */
+  --color-canvas: #F8F9FA;
+  --color-surface: #FFFFFF;
+  --color-surface-raised: #FFFFFF;
+
+  /* Text hierarchy — no pure black */
+  --color-ink: #18181B;
+  --color-ink-secondary: #71717A;
+  --color-ink-muted: #A1A1AA;
+
+  /* Borders */
+  --color-border: #E4E4E7;
+  --color-border-subtle: #F4F4F5;
+
+  /* Single accent: Ajinomoto Red — sat < 80% */
+  --color-accent: #C8102E;
+  --color-accent-hover: #A50D24;
+  --color-accent-subtle: #FEF2F2;
+
+  /* Functional colors */
+  --color-severity-critical: #C8102E;
+  --color-severity-high: #C2410C;
+  --color-severity-medium: #A16207;
+  --color-status-online: #15803D;
+
+  /* Sidebar */
+  --color-sidebar: #1C1C1E;
+  --color-sidebar-hover: #2C2C2E;
+  --color-sidebar-border: #3A3A3C;
+
+  /* Typography (DM Sans + JetBrains Mono, Inter BANNED) */
+  --font-display: "DM Sans", system-ui, sans-serif;
+  --font-body: "DM Sans", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
 }
 
 @layer base {
+  html {
+    font-family: var(--font-body);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
   body {
-    @apply bg-slate-50 text-slate-800 min-h-screen selection:bg-red-500/30;
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    min-height: 100dvh;
+  }
+
+  ::selection {
+    background-color: color-mix(in srgb, var(--color-accent) 18%, transparent);
   }
 }
 
 @layer utilities {
-  .card-panel {
-    @apply bg-white border border-slate-200 shadow-sm rounded-xl;
+  .font-display {
+    font-family: var(--font-display);
   }
-  
-  .top-header {
-    @apply bg-white border-b border-slate-200 sticky top-0 z-50;
+
+  .font-mono {
+    font-family: var(--font-mono);
   }
 }
